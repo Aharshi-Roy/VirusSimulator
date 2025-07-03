@@ -54,6 +54,10 @@ function ask_for_board_specifics()
         if (Number.isInteger(width))
         {
             board_width = width;
+            if (board_width <= 0)
+            {
+                board_width = 10;
+            }
             break;
         }
     }
@@ -64,6 +68,10 @@ function ask_for_board_specifics()
         if (Number.isInteger(height))
         {
             board_height = height;
+            if (board_height <= 0)
+            {
+                board_height = 10;
+            }
             break;
         }
     }
@@ -82,22 +90,26 @@ function ask_for_board_specifics()
             break;
         }
     }
+    if (starting_state != "dead" || starting_state != "normal")
+    {
+        starting_state = "normal";
+    }
     let answer;
     answer = prompt("For the next questions we will ask, whether you would like some pre installed simulated viruses. For yes, type 'yes', and type anything else for no.\nWould you like the 'E' virus?\nKill rate: 66\nStay time: 5\nInfection rate: 40");
     answer = answer.toUpperCase();
-    if (answer == "YES")
+    if (answer == "YES" || answer == "")
     {
         virus_array.push(new Virus("E", 66, 5, 40));
     }
     answer = prompt("Would you like the 'K' virus? It kills everyone. The purpose is to wip the board and make every one dead.\nKill rate: 100\nStay time: 5\nInfection rate: 100");
     answer = answer.toUpperCase();
-    if (answer == "YES")
+    if (answer == "YES" || answer == "")
     {
         virus_array.push(new Virus("K", 100, 5, 100));
     }
     answer = prompt("Would you like the 'W' virus? It really isn't a virus. It's actually a virus that doesn't infect anyone, and it stays in the patient for a long time. This essentially makes it a wall, allowing you to split the board into different sections.\nKill rate: 0\nStay time: 1000000\nInfection rate: 0");
     answer = answer.toUpperCase();
-    if (answer == "YES")
+    if (answer == "YES" || answer == "")
     {
         virus_array.push(new Virus("W", 0, 1000000, 0));
     }
