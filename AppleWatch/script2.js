@@ -47,12 +47,13 @@ class Virus
 }
 function ask_for_board_specifics()
 {
-    board_width = 5;
-    board_height = 5;
+    board_width = 10;
+    board_height = 10;
     starting_state = "normal";
     virus_array.push(new Virus("E", 66, 5, 40));
     virus_array.push(new Virus("K", 100, 5, 100));
     virus_array.push(new Virus("W", 0, 1000000, 0));
+    virus_array.push(new Virus("S", 99, 0, 100));
 }
 let board = document.getElementById("board");
 let controls = document.getElementById("controls");
@@ -114,7 +115,7 @@ function create_button(player, y, x)
     {
         color = "grey";
     }
-    return "<button style=\"background-color: " + color + "; border: none; width: 25px; height: 25px;\" onclick=\"change_board(" + y + ", " + x + ")\">" + player.name + "</button>";
+    return "<button style=\"background-color: " + color + "; border: none; width: 25px; height: 25px; color: black;\" onclick=\"change_board(" + y + ", " + x + ")\">" + player.name + "</button>";
 }
 
 function make_controls(enable, v_num)
